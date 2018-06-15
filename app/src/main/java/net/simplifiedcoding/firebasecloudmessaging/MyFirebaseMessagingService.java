@@ -2,11 +2,13 @@ package net.simplifiedcoding.firebasecloudmessaging;
 
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,13 +19,18 @@ import org.json.JSONObject;
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "MyFirebaseMsgService";
-
+    String push_message;
+    String push_title;
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         if (remoteMessage.getData().size() > 0) {
             Log.e(TAG, "Data Payload: " + remoteMessage.getData().toString());
             try {
                 JSONObject json = new JSONObject(remoteMessage.getData().toString());
+
+                push_message = json.getJSONObject("data").getString("message");
+                push_title   = json.getJSONObject("data").getString("title");
+
                 sendPushNotification(json);
             } catch (Exception e) {
                 Log.e(TAG, "Exception: " + e.getMessage());
@@ -55,6 +62,21 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
            // Intent intent = new Intent(getBaseContext(), SignoutActivity.class);
 
             intent.putExtra("EXTRA_SESSION_ID", title );
+
+           // push_message ;
+            //push_title;
+
+
+
+
+
+            Bundle bundle = new Bundle();
+            bundle.putString("push_title", push_title);
+            // set Fragmentclass Arguments
+           // Fragmentclass fragobj = new Fragmentclass();
+           // fragobj.setArguments(bundle);
+
+
 
             //if there is no image
             if(imageUrl.equals("null")){
