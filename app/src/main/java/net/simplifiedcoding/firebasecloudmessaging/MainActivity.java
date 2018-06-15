@@ -99,6 +99,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if (view == buttonRegister) {
             sendTokenToServer();
+
+
         }
 
         //starting send notification activity

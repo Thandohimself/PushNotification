@@ -60,8 +60,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Intent intent = new Intent(getApplicationContext(),ReallocateDriver.class);
 
            // Intent intent = new Intent(getBaseContext(), SignoutActivity.class);
-
-            intent.putExtra("EXTRA_SESSION_ID", title );
+            intent.putExtra("t", title );
+            intent.putExtra("m", message );
 
            // push_message ;
             //push_title;

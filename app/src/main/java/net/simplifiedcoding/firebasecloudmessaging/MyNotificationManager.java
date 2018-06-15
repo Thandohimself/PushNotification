@@ -26,7 +26,9 @@ import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -115,6 +117,7 @@ public class MyNotificationManager  {
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(mCtx);
         Notification notification;
+
         notification = mBuilder.setSmallIcon(R.mipmap.ic_launcher_foreground).setTicker(title).setWhen(0)
                 .setAutoCancel(true)
                 .setContentIntent(resultPendingIntent)
@@ -122,7 +125,21 @@ public class MyNotificationManager  {
                 .setSmallIcon(R.mipmap.ic_launcher_foreground)
                 .setLargeIcon(BitmapFactory.decodeResource(mCtx.getResources(), R.mipmap.ic_launcher_foreground))
                 .setContentText(message)
+                .setLights(Color.BLUE, 9000, 5000)
+
                 .build();
+        //notificationBuilder.setLights(Color.CYAN, 5000, 5000);
+        notification.defaults = 0;
+        long[] vibrate = { 0, 100, 200, 300,0, 100, 200, 300 };
+        notification.vibrate = vibrate;
+        notification.defaults |= Notification.DEFAULT_SOUND;
+       // notification.flags |= Notification.FLAG_SHOW_LIGHTS;
+/*
+        notification.ledARGB = 0xff00ff00;
+        notification.ledOnMS = 300;
+        notification.ledOffMS = 1000;
+        notification.flags |= Notification.FLAG_SHOW_LIGHTS;
+        //notification.fl*/
 
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
 
