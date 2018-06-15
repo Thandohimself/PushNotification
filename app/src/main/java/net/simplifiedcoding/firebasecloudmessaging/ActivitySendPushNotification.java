@@ -1,6 +1,7 @@
 package net.simplifiedcoding.firebasecloudmessaging;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -113,8 +114,12 @@ public class ActivitySendPushNotification extends AppCompatActivity implements R
     private void sendPush() {
         if (isSendAllChecked) {
             sendMultiplePush();
+
+
+
         } else {
             sendSinglePush();
+
         }
     }
 

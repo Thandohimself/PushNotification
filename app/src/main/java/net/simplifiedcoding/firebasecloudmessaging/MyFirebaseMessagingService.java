@@ -53,8 +53,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Intent intent = new Intent(getApplicationContext(),ReallocateDriver.class);
 
            // Intent intent = new Intent(getBaseContext(), SignoutActivity.class);
-
-            intent.putExtra("EXTRA_SESSION_ID", title );
+            intent.putExtra("t", title );
+            intent.putExtra("m", message );
 
             //if there is no image
             if(imageUrl.equals("null")){
